@@ -4,7 +4,7 @@
 ```
 npm install
 ```
-
+Live Demo: https://helpful-vacherin-4f1b1f.netlify.app/pokemons
 ### Compiles and hot-reloads for development
 ```
 npm run serve
