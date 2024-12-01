@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+body{
+    min-height:100vh;
+    background: linear-gradient(to right, #FFDD00 0%, #FFDD00 50%, #FFDD00 100%);
+
+
+
+
+
+
+
+    background-repeat: no-repeat;
+}
+.button-9 {
+    background-color:yellow;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+     color: black;
+    cursor: pointer;
+    font-size: 1.3rem;
+    height: 44px;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+     outline: none;
+    
+      position: relative;
+    text-align: center;
+  
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+      width:180px;
+      margin: 0 auto;
+  }
+  .button-9:hover{
+    background: black;
+    color:yellow;
+
+    text-decoration: none;
+   }
+@layer components{
+    .containerteszt{
+        max-width: 1200px;
+        width:80%;
+        margin: 0 auto;
+    }
+}

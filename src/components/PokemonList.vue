@@ -1,6 +1,8 @@
 <template>
-<div>
-  <p>Select a Pokemon type</p>
+<div class="containerteszt">
+  <p class="mt-5 text-center text-4xl">Select a Pokemon Type</p>
+
+  <div class="flex flex-col items-center mt-6">
         <select name="pokemons" id="pokemons" v-model="teszt">
 <option value="" selected disabled hidden>Choose here</option>
   <option value=normal>normal</option>
@@ -8,17 +10,18 @@
   <option value="ground">ground</option>
    
 </select>
-<div>
-<label for="nameSearch"> Search by name:</label>
- <input type="text" id="nameSearch" v-model="searchByName" @input="filterName"> 
+ 
+<label class="mt-5" for="nameSearch"> Search by name:</label>
+ <input  type="text" id="nameSearch" v-model="searchByName" @input="filterName"> 
   </div>
-<ul>
- 
- 
+<ul class="flex justify-evenly flex-wrap gap-7 mt-10 ">
   <li v-for="pokemon in filterPokemons" :key="pokemon.pokemon.name"> 
 
-{{pokemon.pokemon.name}} 
-<router-link :to="'/pokemons/' + pokemon.pokemon.name"> Details</router-link>
+<div class="h-[200px] w-[300px] flex flex-col items-center justify-between p-3  bg-linear-bg   rounded-xl text-black  " >
+<h1 class="font-bold text-1xl">Name: {{pokemon.pokemon.name}} </h1>
+
+<router-link class="button-9" :to="'/pokemons/' + pokemon.pokemon.name"> Details</router-link>
+</div>
  </li>
   </ul>
 </div>
@@ -36,7 +39,7 @@ export default {
     return {
 pokemons: [],
 type:'',
-teszt: '',
+teszt: 'normal',
 searchByName:'',
 filterPokemons: [],
 name:[]
@@ -46,6 +49,9 @@ name:[]
     openDetails(name){
 return '/pokemons/' + name
     }
+  },
+  created(){
+this.fetchPokemons();
   },
   methods: {
    
@@ -74,5 +80,10 @@ watch: {
 
 
 <style>
-
+.teszt{
+  
+margin:0 auto;
+max-width:1200px;
+width:80%;
+}
 </style>
