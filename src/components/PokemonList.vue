@@ -1,26 +1,26 @@
 <template>
-<div class="containerteszt">
+<div class="container">
   <p class="mt-5 text-center text-4xl">Select a Pokemon Type</p>
 
   <div class="flex flex-col items-center mt-6">
-        <select name="pokemons" id="pokemons" v-model="teszt">
+        <select name="pokemons" id="pokemons" v-model="selectedPokemon" class="w-[80%] p-3 border-none outline-none  cursor-pointer">
 <option value="" selected disabled hidden>Choose here</option>
-  <option value=normal>normal</option>
+  <option value="normal">normal</option>
   <option value="water">water</option>
   <option value="ground">ground</option>
    
 </select>
  
 <label class="mt-5" for="nameSearch"> Search by name:</label>
- <input  type="text" id="nameSearch" v-model="searchByName" @input="filterName"> 
+ <input class="text-lg p-3 border-none outline-none "  type="text" id="nameSearch" v-model="searchByName" @input="filterName"> 
   </div>
-<ul class="flex justify-evenly flex-wrap gap-7 mt-10 ">
+<ul class="flex justify-evenly flex-wrap gap-7 mt-10 mb-10 text-center ">
   <li v-for="pokemon in filterPokemons" :key="pokemon.pokemon.name"> 
 
-<div class="h-[200px] w-[300px] flex flex-col items-center justify-between p-3  bg-linear-bg   rounded-xl text-black  " >
-<h1 class="font-bold text-1xl">Name: {{pokemon.pokemon.name}} </h1>
+<div class="h-[250px] w-[330px] flex flex-col items-center justify-between p-3  bg-linear-bg   rounded-xl text-black  shadow-xl" >
+<h1 class="font-bold text-2xl uppercase">Name: {{pokemon.pokemon.name}} </h1>
 
-<router-link class="button-9" :to="'/pokemons/' + pokemon.pokemon.name"> Details</router-link>
+<router-link class="button" :to="'/pokemons/' + pokemon.pokemon.name"> Details</router-link>
 </div>
  </li>
   </ul>
@@ -39,7 +39,7 @@ export default {
     return {
 pokemons: [],
 type:'',
-teszt: 'normal',
+selectedPokemon: 'normal',
 searchByName:'',
 filterPokemons: [],
 name:[]
@@ -57,21 +57,19 @@ this.fetchPokemons();
    
     async fetchPokemons() {
       try {
-       const teszt= await axios.get(`https://pokeapi.co/api/v2/type/${this.teszt}`);
-           this.pokemons = teszt.data;
-        this.filterPokemons=teszt.data.pokemon
-        console.log(this.filterPokemons)
-            } catch (error) {
+       const pokemons= await axios.get(`https://pokeapi.co/api/v2/type/${this.selectedPokemon}`);
+           this.pokemons = pokemons.data;
+        this.filterPokemons=pokemons.data.pokemon
+              } catch (error) {
         console.error('Error fetching Pokémon data:', error);
       }
     },
     filterName(){
-     this.filterPokemons= this.pokemons.pokemon.filter(poke =>poke.pokemon.name.includes(this.searchByName))
-     console.log(this.filterPokemons.length)
+     this.filterPokemons= this.pokemons.pokemon.filter(poke =>poke.pokemon.name.toUpperCase().includes(this.searchByName.toUpperCase()))
     }
   },
 watch: {
-    teszt: 'fetchPokemons'
+    selectedPokemon: 'fetchPokemons'
   },
 }
 
@@ -80,10 +78,20 @@ watch: {
 
 
 <style>
-.teszt{
+
+select {
   
-margin:0 auto;
-max-width:1200px;
-width:80%;
+
+
+    
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+ select:hover,
+ select:focus {
+ border-color: #A9D3F6;
+ border-width: 2px;
+ border-style: solid;
+ border-radius:1rem;
+  background-color: #e6f7ff;
 }
 </style>

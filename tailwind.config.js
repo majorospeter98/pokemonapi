@@ -5,7 +5,7 @@ module.exports = {
    theme: {
      extend: {
       backgroundColor:{
-        'linear-bg': '#00A9E0'
+        'linear-bg':  '#A9D3F6' 
 
       }
      },

@@ -8,20 +8,20 @@
     padding:0;
     box-sizing: border-box;
     line-height: 1.6;
+    scrollbar-color:skyblue transparent;  /* Firefox */
+  
 }
+:root{
+    scrollbar-color:red;
+   
+    }
 body{
     min-height:100vh;
-    background: linear-gradient(to right, #FFDD00 0%, #FFDD00 50%, #FFDD00 100%);
-
-
-
-
-
-
-
+    background: linear-gradient(to right, #fcdc0f 0%, #fada0c 50%, #FFDD00 100%);
     background-repeat: no-repeat;
+  
 }
-.button-9 {
+.button {
     background-color:yellow;
     border-radius: 6px;
     border-width: 0;
@@ -43,14 +43,14 @@ body{
       width:180px;
       margin: 0 auto;
   }
-  .button-9:hover{
+  .button:hover{
     background: black;
     color:yellow;
 
     text-decoration: none;
    }
 @layer components{
-    .containerteszt{
+    .container{
         max-width: 1200px;
         width:80%;
         margin: 0 auto;
