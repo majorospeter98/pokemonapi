@@ -7,9 +7,10 @@
       :src="pokemonNames.sprites.front_default"
       :alt="pokemonNames.name + ' ' + 'image'"
     />
-    <h1 class="text-4xl font bold">name: {{ pokemonNames.name }}</h1>
+    <h1 class="text-5xl font bold">name: {{ pokemonNames.name }}</h1>
     <p>Weight: {{ pokemonNames.weight }}</p>
     <p>Height: {{ pokemonNames.height }}</p>
+     <p>Experience: {{ pokemonNames.base_experience }}</p>
     <router-link class="button" to="/pokemons">Main Page</router-link>
   </div>
 </template>
@@ -31,8 +32,8 @@ export default {
         const getPokemonDetails = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${this.name}`
         );
-        this.pokemonNames = getPokemonDetails.data;
-      } catch (error) {
+        console.log(getPokemonDetails.data)
+        this.pokemonNames = getPokemonDetails.data;      } catch (error) {
         console.error("Error fetching Pokémon data:", error);
       }
     },
