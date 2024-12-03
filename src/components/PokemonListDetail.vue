@@ -3,7 +3,7 @@
     v-if="pokemonNames.sprites"
     class="flex items-center flex-col gap-4 justify-center mt-6"
   >
-    <img
+    <img class="h-[180px] w-[210px]"
       :src="pokemonNames.sprites.front_default"
       :alt="pokemonNames.name + ' ' + 'image'"
     />

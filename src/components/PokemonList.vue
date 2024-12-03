@@ -29,7 +29,7 @@
     >
       <li v-for="pokemon in filterPokemons" :key="pokemon.pokemon.name">
         <div
-          class="h-[250px] w-[330px] flex flex-col items-center justify-between p-3 bg-linear-bg rounded-xl text-black shadow-xl"
+          class="h-[220px] w-[300px] flex flex-col items-center justify-between p-3 bg-linear-bg rounded-xl text-black shadow-xl"
         >
           <h1 class="font-bold text-2xl uppercase">
             {{ pokemon.pokemon.name }}
