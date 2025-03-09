@@ -8,12 +8,12 @@
   box-sizing: border-box;
   line-height: 1.6;
   scrollbar-color: skyblue transparent;
-  font-family: "Poppins", serif;
 }
 body {
   min-height: 100vh;
   background: linear-gradient(to right, #fcdc0f 0%, #fada0c 50%, #ffdd00 100%);
   background-repeat: no-repeat;
+  font-family: "Press Start 2P", system-ui, sans-serif;
 }
 .button {
   background-color: yellow;
@@ -23,25 +23,22 @@ body {
     rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
   color: black;
   cursor: pointer;
-  font-size: 1.3rem;
-  height: 44px;
+  font-size: 1.1rem;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   outline: none;
-
   position: relative;
   text-align: center;
-
   transform: translateZ(0);
-  transition: all 0.2s, box-shadow 0.08s ease-in;
+  transition: all 0.8s, box-shadow 0.08s ease-in;
   width: 180px;
   margin: 0 auto;
 }
 .button:hover {
   background: black;
   color: yellow;
-
   text-decoration: none;
 }
 @layer components {

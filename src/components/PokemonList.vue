@@ -9,10 +9,9 @@
         v-model="selectedPokemon"
         class="min-w-[280px] p-2 border-none outline-none cursor-pointer"
       >
-        <option value="" selected disabled hidden>Choose here</option>
-        <option value="normal">normal</option>
-        <option value="water">water</option>
-        <option value="ground">ground</option>
+        <option v-for="type in types" :key="type.name" :value="type.name">
+          {{ type.name }}
+        </option>
       </select>
 
       <label class="mt-5" for="nameSearch"> Search by name:</label>
@@ -48,11 +47,10 @@ import axios from "axios";
 
 export default {
   name: "App",
-  components: {},
   data() {
     return {
+      types: [],
       pokemons: [],
-      type: "",
       selectedPokemon: "normal",
       searchByName: "",
       allInformation: [],
@@ -66,9 +64,18 @@ export default {
     },
   },
   created() {
+    this.fetchTypes();
     this.fetchPokemons();
   },
   methods: {
+    async fetchTypes() {
+      try {
+        const types = await axios.get("https://pokeapi.co/api/v2/type/");
+        this.types = types.data.results;
+      } catch (error) {
+        console.error("Error fetching Pokémon data:", error);
+      }
+    },
     async fetchPokemons() {
       try {
         const pokemons = await axios.get(
@@ -77,7 +84,6 @@ export default {
         this.pokemons = pokemons.data;
 
         this.filterPokemons = pokemons.data.pokemon;
-        this.allInformation = pokemons.data.sprites;
       } catch (error) {
         console.error("Error fetching Pokémon data:", error);
       }
